@@ -1595,9 +1595,14 @@ function render(){
 
         html+=`</div>`;
 
-        setScreen(html);
-        setNext(true);
-        return;
+setScreen(html);
+setNext(true);
+
+document.getElementById("nextBtn").onclick=()=>{
+    pushStep("riepilogo");
+};
+
+return;
     }
 
     /* ======================
