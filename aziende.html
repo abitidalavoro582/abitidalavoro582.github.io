@@ -710,10 +710,12 @@ const colors = [
 
 const sectors = [
     ["Edilizia","🏗️"],
-    ["Logistica","📦"],
+    ["Logistica / Magazzino","📦"],
+    ["Elettricisti","⚡"],
+    ["Idraulici","🔧"],
+    ["Meccanici / Gommisti","⚙️"],
+    ["Tecnici / Manutentori","🛠️"],
     ["Pulizie","✨"],
-    ["Ristorazione","🍴"],
-    ["Sanità","⚕️"],
     ["Giardinaggio","🌿"],
     ["Altro","＋"]
 ];
@@ -1050,8 +1052,8 @@ function render(){
 
         let html=question(
             "IL TUO LAVORO",
-            "In quale settore lavorate?",
-            "Ci aiuta a capire meglio il tipo di utilizzo della vostra divisa."
+            "Di cosa si occupa la tua azienda?",
+            "Seleziona l'attività principale. Ti guideremo nella composizione della fornitura."
         );
 
         html+=`<div class="options">`;
