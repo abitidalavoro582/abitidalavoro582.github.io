@@ -1,0 +1,1881 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crea la tua fornitura | Abiti da Lavoro di Alessio Vitale</title>
+
+<style>
+:root{
+    --verde:#244c3d;
+    --verde2:#32624f;
+    --verde3:#e9f1ed;
+    --oro:#e8b928;
+    --testo:#202622;
+    --grigio:#66706a;
+    --sfondo:#f6f7f5;
+    --bianco:#fff;
+    --bordo:#e1e6e3;
+    --ombra:0 14px 40px rgba(26,50,40,.10);
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    color:var(--testo);
+    background:
+        radial-gradient(circle at top right,#edf3ef 0,transparent 35%),
+        var(--sfondo);
+}
+
+button,input{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+/* HEADER */
+
+header{
+    height:76px;
+    background:#fff;
+    border-bottom:1px solid var(--bordo);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 32px;
+    position:sticky;
+    top:0;
+    z-index:20;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:13px;
+}
+
+.brand img{
+    width:48px;
+    height:48px;
+    object-fit:contain;
+}
+
+.brand-text strong{
+    display:block;
+    color:var(--verde);
+    font-size:16px;
+}
+
+.brand-text span{
+    font-size:12px;
+    color:var(--grigio);
+}
+
+.home-link{
+    text-decoration:none;
+    color:var(--verde);
+    font-weight:700;
+    border:1px solid var(--bordo);
+    padding:10px 15px;
+    border-radius:12px;
+}
+
+/* APP */
+
+.app{
+    min-height:calc(100vh - 76px);
+    display:flex;
+    flex-direction:column;
+}
+
+.top-info{
+    max-width:1180px;
+    width:100%;
+    margin:0 auto;
+    padding:24px 25px 0;
+}
+
+.top-line{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+}
+
+.small-title{
+    color:var(--verde);
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:1.3px;
+}
+
+.progress-text{
+    font-size:13px;
+    color:var(--grigio);
+    font-weight:700;
+}
+
+.progress{
+    height:6px;
+    background:#e4e8e5;
+    border-radius:20px;
+    overflow:hidden;
+    margin-top:13px;
+}
+
+.progress-bar{
+    height:100%;
+    width:8%;
+    background:linear-gradient(90deg,var(--verde),var(--oro));
+    border-radius:20px;
+    transition:.4s ease;
+}
+
+.breadcrumb{
+    margin-top:14px;
+    font-size:12px;
+    color:#7a837e;
+    min-height:16px;
+}
+
+/* SCHERMATA */
+
+.screen{
+    width:100%;
+    max-width:1180px;
+    margin:auto;
+    padding:35px 25px 110px;
+    animation:entra .35s ease;
+}
+
+@keyframes entra{
+    from{
+        opacity:0;
+        transform:translateY(12px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.question{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.question .step-label{
+    color:var(--oro);
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+}
+
+.question h1{
+    color:var(--verde);
+    font-size:clamp(28px,4vw,45px);
+    line-height:1.08;
+    margin:9px 0 10px;
+}
+
+.question p{
+    margin:0 auto;
+    max-width:720px;
+    color:var(--grigio);
+    font-size:16px;
+    line-height:1.5;
+}
+
+/* CARDS */
+
+.options{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(175px,1fr));
+    gap:15px;
+}
+
+.options.compact{
+    max-width:900px;
+    margin:auto;
+}
+
+.card{
+    position:relative;
+    border:2px solid transparent;
+    background:#fff;
+    border-radius:20px;
+    min-height:135px;
+    padding:20px 16px;
+    box-shadow:0 7px 25px rgba(35,58,48,.07);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    transition:.2s ease;
+    overflow:hidden;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+    box-shadow:var(--ombra);
+    border-color:#cbd8d1;
+}
+
+.card.selected{
+    border-color:var(--verde);
+    background:#f0f6f3;
+    box-shadow:0 8px 30px rgba(36,76,61,.16);
+}
+
+.card.selected:after{
+    content:"✓";
+    position:absolute;
+    top:10px;
+    right:10px;
+    width:27px;
+    height:27px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    background:var(--verde);
+    color:#fff;
+    font-weight:900;
+}
+
+.card .icon{
+    font-size:35px;
+    margin-bottom:10px;
+}
+
+.card .name{
+    color:var(--verde);
+    font-weight:800;
+    font-size:17px;
+}
+
+.card .desc{
+    color:var(--grigio);
+    font-size:12px;
+    line-height:1.4;
+    margin-top:7px;
+}
+
+/* PRODUCT CARD */
+
+.product-card{
+    padding:0 0 18px;
+    justify-content:flex-start;
+}
+
+.product-image{
+    width:100%;
+    height:205px;
+    object-fit:contain;
+    background:#fff;
+    padding:12px;
+    border-radius:18px 18px 0 0;
+}
+
+.product-card .name{
+    padding:3px 10px 0;
+}
+
+/* COLORI */
+
+.colors{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:16px;
+    max-width:800px;
+    margin:auto;
+}
+
+.color-card{
+    width:105px;
+    min-height:115px;
+    background:#fff;
+    border:2px solid transparent;
+    border-radius:18px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    font-weight:800;
+    color:var(--verde);
+    box-shadow:0 7px 20px rgba(35,58,48,.07);
+}
+
+.color-card.selected{
+    border-color:var(--verde);
+    background:#f0f6f3;
+}
+
+.dot{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    border:1px solid #ccd2ce;
+    box-shadow:inset 0 0 0 3px rgba(255,255,255,.3);
+}
+
+.altro-dot{
+    display:grid;
+    place-items:center;
+    background:#f2f2f2;
+    color:#555;
+    font-size:23px;
+}
+
+/* INFO SCARPE */
+
+.shoe-card{
+    min-height:230px;
+    justify-content:flex-start;
+}
+
+.shoe-card img{
+    width:100%;
+    height:125px;
+    object-fit:contain;
+    margin-bottom:5px;
+}
+
+.shoe-card .name{
+    font-size:20px;
+}
+
+.shoe-card .desc{
+    font-size:13px;
+}
+
+/* CAMBI */
+
+.change-number{
+    font-size:34px;
+    color:var(--verde);
+    font-weight:900;
+    margin-bottom:5px;
+}
+
+/* NAV */
+
+.bottom-nav{
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    min-height:78px;
+    background:rgba(255,255,255,.96);
+    backdrop-filter:blur(12px);
+    border-top:1px solid var(--bordo);
+    z-index:30;
+}
+
+.bottom-inner{
+    max-width:1180px;
+    min-height:78px;
+    margin:auto;
+    padding:12px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+}
+
+.nav-btn{
+    border:0;
+    border-radius:14px;
+    padding:14px 22px;
+    font-weight:800;
+}
+
+.back{
+    background:#edf0ee;
+    color:var(--verde);
+}
+
+.next{
+    background:var(--verde);
+    color:#fff;
+    min-width:150px;
+}
+
+.next:disabled{
+    opacity:.35;
+    cursor:not-allowed;
+}
+
+/* SUMMARY */
+
+.summary{
+    max-width:850px;
+    margin:auto;
+    background:#fff;
+    border-radius:24px;
+    box-shadow:var(--ombra);
+    overflow:hidden;
+}
+
+.summary-head{
+    background:var(--verde);
+    color:#fff;
+    padding:25px;
+}
+
+.summary-head h2{
+    margin:0 0 5px;
+}
+
+.summary-body{
+    padding:12px 25px 25px;
+}
+
+.summary-row{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    padding:14px 0;
+    border-bottom:1px solid #edf0ee;
+}
+
+.summary-row span:first-child{
+    color:var(--grigio);
+}
+
+.summary-row strong{
+    text-align:right;
+    color:var(--verde);
+}
+
+.big-cta{
+    display:block;
+    width:100%;
+    border:0;
+    background:var(--oro);
+    color:#202622;
+    font-weight:900;
+    padding:18px;
+    border-radius:15px;
+    margin-top:22px;
+}
+
+/* FORM */
+
+.form-box{
+    max-width:680px;
+    margin:auto;
+    background:#fff;
+    padding:30px;
+    border-radius:24px;
+    box-shadow:var(--ombra);
+}
+
+.field{
+    margin-bottom:16px;
+}
+
+.field label{
+    display:block;
+    font-size:13px;
+    color:var(--verde);
+    font-weight:800;
+    margin-bottom:7px;
+}
+
+.field input{
+    width:100%;
+    border:1px solid #d8dedb;
+    border-radius:12px;
+    padding:14px;
+    outline:none;
+}
+
+.field input:focus{
+    border-color:var(--verde);
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    header{
+        height:65px;
+        padding:0 14px;
+    }
+
+    .brand img{
+        width:40px;
+        height:40px;
+    }
+
+    .brand-text strong{
+        font-size:13px;
+    }
+
+    .brand-text span{
+        display:none;
+    }
+
+    .home-link{
+        font-size:12px;
+        padding:8px 10px;
+    }
+
+    .top-info{
+        padding:16px 15px 0;
+    }
+
+    .screen{
+        padding:25px 14px 105px;
+    }
+
+    .question{
+        margin-bottom:22px;
+    }
+
+    .question h1{
+        font-size:29px;
+    }
+
+    .question p{
+        font-size:14px;
+    }
+
+    .options{
+        grid-template-columns:repeat(2,1fr);
+        gap:10px;
+    }
+
+    .card{
+        min-height:120px;
+        padding:14px 9px;
+        border-radius:16px;
+    }
+
+    .product-image{
+        height:145px;
+        padding:6px;
+    }
+
+    .product-card .name{
+        font-size:14px;
+    }
+
+    .card .desc{
+        font-size:11px;
+    }
+
+    .colors{
+        gap:9px;
+    }
+
+    .color-card{
+        width:92px;
+    }
+
+    .bottom-inner{
+        padding:10px 14px;
+    }
+
+    .nav-btn{
+        padding:13px 17px;
+    }
+
+    .summary-row{
+        display:block;
+    }
+
+    .summary-row strong{
+        display:block;
+        text-align:left;
+        margin-top:5px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="brand">
+        <img src="logo.webp" alt="Abiti da Lavoro di Alessio Vitale">
+        <div class="brand-text">
+            <strong>Abiti da Lavoro</strong>
+            <span>di Alessio Vitale · Roma</span>
+        </div>
+    </div>
+
+    <a class="home-link" href="index.html">← Torna al sito</a>
+</header>
+
+<div class="app">
+
+    <div class="top-info">
+        <div class="top-line">
+            <div class="small-title">CREA LA TUA FORNITURA</div>
+            <div class="progress-text" id="progressText">Passaggio 1</div>
+        </div>
+
+        <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="breadcrumb" id="breadcrumb"></div>
+    </div>
+
+    <main class="screen" id="screen"></main>
+
+</div>
+
+<div class="bottom-nav" id="bottomNav">
+    <div class="bottom-inner">
+        <button class="nav-btn back" id="backBtn" onclick="goBack()">‹ INDIETRO</button>
+        <button class="nav-btn next" id="nextBtn" onclick="goNext()">CONTINUA ›</button>
+    </div>
+</div>
+
+<script>
+
+/* ===========================
+   STATO DEL CONFIGURATORE
+=========================== */
+
+const state = {
+    persone:"",
+    settore:"",
+    stagione:"",
+
+    primoStrato:"",
+    primoColore:"",
+    primoCambi:"",
+
+    secondoStrato:"",
+    secondoColore:"",
+    secondoCambi:"",
+
+    pantaloneTipo:"",
+    pantaloneModello:"",
+    pantaloneColore:"",
+    pantaloneCambi:"",
+
+    esterno:[],
+    esternoColore:"",
+
+    giletEstivo:"",
+    giletColore:"",
+
+    scarpaClasse:"",
+    scarpaAltezza:"",
+
+    stampa:"",
+    logo:"",
+
+    dpi:[],
+
+    azienda:"",
+    referente:"",
+    telefono:"",
+    email:""
+};
+
+let history = [];
+let currentStep = "persone";
+
+/* ===========================
+   DATI
+=========================== */
+
+const colors = [
+    ["Navy","#182a42"],
+    ["Nero","#171717"],
+    ["Grigio","#777b7c"],
+    ["Bianco","#ffffff"],
+    ["Rosso","#c9232d"],
+    ["Blu Royal","#1766ba"],
+    ["Verde","#25704b"],
+    ["Sabbia","#cbb995"],
+    ["Altro","altro"]
+];
+
+const sectors = [
+    ["Edilizia","🏗️"],
+    ["Logistica","📦"],
+    ["Pulizie","✨"],
+    ["Ristorazione","🍴"],
+    ["Sanità","⚕️"],
+    ["Giardinaggio","🌿"],
+    ["Altro","＋"]
+];
+
+/* ===========================
+   HELPERS
+=========================== */
+
+function setScreen(html){
+    const screen = document.getElementById("screen");
+    screen.style.animation="none";
+    screen.offsetHeight;
+    screen.style.animation="entra .35s ease";
+    screen.innerHTML=html;
+    updateTop();
+}
+
+function question(label,title,desc=""){
+    return `
+    <div class="question">
+        <div class="step-label">${label}</div>
+        <h1>${title}</h1>
+        ${desc ? `<p>${desc}</p>` : ""}
+    </div>`;
+}
+
+function card(value,title,icon="",desc="",selected=false,img=""){
+    return `
+    <button class="card ${img ? "product-card":""} ${selected ? "selected":""}"
+        onclick="selectCurrent('${escapeJS(value)}')">
+
+        ${img ? `<img class="product-image" src="${img}" alt="${title}">`
+              : `<div class="icon">${icon}</div>`}
+
+        <div class="name">${title}</div>
+        ${desc ? `<div class="desc">${desc}</div>`:""}
+    </button>`;
+}
+
+function escapeJS(s){
+    return String(s).replace(/'/g,"\\'");
+}
+
+function updateTop(){
+
+    const labels = [];
+
+    if(state.persone) labels.push(state.persone+" persone");
+    if(state.settore) labels.push(state.settore);
+    if(state.stagione) labels.push(state.stagione);
+
+    document.getElementById("breadcrumb").textContent =
+        labels.length ? labels.join("  →  ") : "Iniziamo insieme";
+
+    const max = state.stagione==="Estivo" ? 12 : 14;
+    const pos = Math.min(history.length+1,max);
+
+    document.getElementById("progressText").textContent =
+        "Passaggio "+pos;
+
+    document.getElementById("progressBar").style.width =
+        Math.min(100,(pos/max)*100)+"%";
+}
+
+function setNext(enabled=true){
+    document.getElementById("nextBtn").disabled=!enabled;
+}
+
+function pushStep(next){
+    history.push(currentStep);
+    currentStep=next;
+    render();
+}
+
+function goBack(){
+
+    if(!history.length){
+        window.location.href="index.html";
+        return;
+    }
+
+    currentStep=history.pop();
+    render();
+}
+
+function goNext(){
+
+    const routes = {
+
+        persone:"settore",
+        settore:"stagione",
+
+        inverno_primo:"inverno_primo_colore",
+        inverno_primo_colore:"inverno_primo_cambi",
+        inverno_primo_cambi:"inverno_secondo",
+
+        inverno_secondo:"inverno_secondo_colore",
+        inverno_secondo_colore:"inverno_secondo_cambi",
+        inverno_secondo_cambi:"inverno_pantalone",
+
+        inverno_pantalone:"inverno_pantalone_colore",
+        inverno_pantalone_colore:"inverno_pantalone_cambi",
+        inverno_pantalone_cambi:"inverno_esterno",
+
+        inverno_esterno:"inverno_esterno_colore",
+        inverno_esterno_colore:"scarpa_classe",
+
+        estate_primo:"estate_primo_colore",
+        estate_primo_colore:"estate_primo_cambi",
+        estate_primo_cambi:"estate_pantalone_tipo",
+
+        estate_pantalone_tipo:"estate_pantalone_modello",
+        estate_pantalone_modello:"estate_pantalone_colore",
+        estate_pantalone_colore:"estate_pantalone_cambi",
+        estate_pantalone_cambi:"estate_gilet",
+
+        estate_gilet:"estate_gilet_colore",
+        estate_gilet_colore:"scarpa_classe",
+
+        scarpa_classe:"scarpa_altezza",
+        scarpa_altezza:"stampa",
+        stampa:"logo",
+        logo:"dpi",
+        dpi:"riepilogo"
+    };
+
+    if(currentStep==="stagione"){
+
+        if(state.stagione==="Invernale"){
+            pushStep("inverno_primo");
+        }else{
+            pushStep("estate_primo");
+        }
+
+        return;
+    }
+
+    if(routes[currentStep]){
+        pushStep(routes[currentStep]);
+    }
+}
+
+/* ===========================
+   SELEZIONE
+=========================== */
+
+function selectCurrent(value){
+
+    const map = {
+
+        persone:"persone",
+        settore:"settore",
+        stagione:"stagione",
+
+        inverno_primo:"primoStrato",
+        inverno_primo_colore:"primoColore",
+        inverno_primo_cambi:"primoCambi",
+
+        inverno_secondo:"secondoStrato",
+        inverno_secondo_colore:"secondoColore",
+        inverno_secondo_cambi:"secondoCambi",
+
+        inverno_pantalone:"pantaloneModello",
+        inverno_pantalone_colore:"pantaloneColore",
+        inverno_pantalone_cambi:"pantaloneCambi",
+
+        inverno_esterno_colore:"esternoColore",
+
+        estate_primo:"primoStrato",
+        estate_primo_colore:"primoColore",
+        estate_primo_cambi:"primoCambi",
+
+        estate_pantalone_tipo:"pantaloneTipo",
+        estate_pantalone_modello:"pantaloneModello",
+        estate_pantalone_colore:"pantaloneColore",
+        estate_pantalone_cambi:"pantaloneCambi",
+
+        estate_gilet:"giletEstivo",
+        estate_gilet_colore:"giletColore",
+
+        scarpa_classe:"scarpaClasse",
+        scarpa_altezza:"scarpaAltezza",
+
+        stampa:"stampa",
+        logo:"logo"
+    };
+
+    if(currentStep==="inverno_esterno"){
+
+        if(value==="Non serve"){
+            state.esterno=[];
+        }else{
+            const i=state.esterno.indexOf(value);
+
+            if(i>=0) state.esterno.splice(i,1);
+            else state.esterno.push(value);
+        }
+
+        render();
+        return;
+    }
+
+    if(currentStep==="dpi"){
+
+        if(value==="Non serve"){
+            state.dpi=[];
+        }else{
+            const i=state.dpi.indexOf(value);
+
+            if(i>=0) state.dpi.splice(i,1);
+            else state.dpi.push(value);
+        }
+
+        render();
+        return;
+    }
+
+    const key=map[currentStep];
+
+    if(key){
+        state[key]=value;
+        render();
+
+        /* Piccolo avanzamento automatico nelle scelte iniziali */
+        if(["persone","settore","stagione"].includes(currentStep)){
+            setTimeout(()=>goNext(),350);
+        }
+    }
+}
+
+/* ===========================
+   COLORI
+=========================== */
+
+function renderColors(title,key){
+
+    let html=question(
+        "SCELTA COLORE",
+        title,
+        "Scegli il colore che preferisci. Se non è presente, seleziona Altro."
+    );
+
+    html+=`<div class="colors">`;
+
+    colors.forEach(([name,color])=>{
+
+        const selected=state[key]===name;
+
+        html+=`
+        <button class="color-card ${selected?"selected":""}"
+            onclick="selectCurrent('${name}')">
+
+            <div class="dot ${color==="altro"?"altro-dot":""}"
+                 style="${color!=="altro" ? `background:${color}`:""}">
+                 ${color==="altro" ? "+" : ""}
+            </div>
+
+            ${name}
+        </button>`;
+    });
+
+    html+=`</div>`;
+
+    setScreen(html);
+    setNext(!!state[key]);
+}
+
+/* ===========================
+   CAMBI
+=========================== */
+
+function renderCambi(nome,key){
+
+    let html=question(
+        "CAMBI PER DIPENDENTE",
+        `Quanti ${nome} per ogni persona?`,
+        "Il numero di cambi ci aiuta a costruire una proposta più vicina alle vostre esigenze."
+    );
+
+    html+=`<div class="options compact">`;
+
+    ["1","2","3","4+"].forEach(n=>{
+
+        html+=`
+        <button class="card ${state[key]===n?"selected":""}"
+            onclick="selectCurrent('${n}')">
+            <div class="change-number">${n}</div>
+            <div class="name">${n==="1" ? "capo" : "capi"}</div>
+        </button>`;
+    });
+
+    html+=`</div>`;
+
+    setScreen(html);
+    setNext(!!state[key]);
+}
+
+/* ===========================
+   RENDER PRINCIPALE
+=========================== */
+
+function render(){
+
+    /* PERSONE */
+
+    if(currentStep==="persone"){
+
+        let html=question(
+            "INIZIAMO",
+            "Quante persone dobbiamo vestire?",
+            "Partiamo dalla dimensione della fornitura."
+        );
+
+        html+=`<div class="options compact">`;
+
+        ["2+","5+","10+","15+","25+"].forEach(v=>{
+            html+=card(
+                v,v,
+                "👥","",
+                state.persone===v
+            );
+        });
+
+        html+=`</div>`;
+
+        setScreen(html);
+        setNext(!!state.persone);
+        return;
+    }
+
+    /* SETTORE */
+
+    if(currentStep==="settore"){
+
+        let html=question(
+            "IL TUO LAVORO",
+            "In quale settore lavorate?",
+            "Ci aiuta a capire meglio il tipo di utilizzo della vostra divisa."
+        );
+
+        html+=`<div class="options">`;
+
+        sectors.forEach(([name,icon])=>{
+            html+=card(
+                name,name,
+                icon,"",
+                state.settore===name
+            );
+        });
+
+        html+=`</div>`;
+
+        setScreen(html);
+        setNext(!!state.settore);
+        return;
+    }
+
+    /* STAGIONE */
+
+    if(currentStep==="stagione"){
+
+        let html=question(
+            "STAGIONE",
+            "Quale fornitura stai cercando?",
+            "Costruiamo insieme una configurazione indicativa."
+        );
+
+        html+=`
+        <div class="options compact">
+            ${card("Estivo","ESTIVO","☀️","Abbigliamento leggero per la stagione più calda.",state.stagione==="Estivo")}
+            ${card("Invernale","INVERNALE","❄️","Strati e protezione per la stagione più fredda.",state.stagione==="Invernale")}
+        </div>`;
+
+        setScreen(html);
+        setNext(!!state.stagione);
+        return;
+    }
+
+    /* ======================
+       INVERNO
+    ====================== */
+
+    if(currentStep==="inverno_primo"){
+
+        let html=question(
+            "1° STRATO",
+            "Da cosa vuoi partire?",
+            "Scegli il capo che immagini come primo strato della divisa."
+        );
+
+        html+=`<div class="options">`;
+
+        html+=card("Polo M/L","Polo M/L","","",state.primoStrato==="Polo M/L","polo_ml.webp");
+        html+=card("Polo M/C","Polo M/C","","",state.primoStrato==="Polo M/C","polo_mc.webp");
+        html+=card("T-Shirt","T-Shirt","","",state.primoStrato==="T-Shirt","tshirt.webp");
+        html+=card("Non serve","Non ne ho bisogno","⊘","",state.primoStrato==="Non serve");
+
+        html+=`</div>`;
+
+        setScreen(html);
+        setNext(!!state.primoStrato);
+
+        if(state.primoStrato==="Non serve"){
+            document.getElementById("nextBtn").onclick=()=>{
+                pushStep("inverno_secondo");
+            };
+        }else{
+            document.getElementById("nextBtn").onclick=goNext;
+        }
+
+        return;
+    }
+
+    if(currentStep==="inverno_primo_colore"){
+        renderColors("Che colore preferisci per il primo strato?","primoColore");
+        return;
+    }
+
+    if(currentStep==="inverno_primo_cambi"){
+        renderCambi(state.primoStrato,"primoCambi");
+        return;
+    }
+
+    if(currentStep==="inverno_secondo"){
+
+        let html=question(
+            "2° STRATO",
+            "Aggiungiamo uno strato caldo?",
+            "Scegli la soluzione che preferisci."
+        );
+
+        html+=`<div class="options">`;
+
+        html+=card("Felpa girocollo","Felpa girocollo","","",state.secondoStrato==="Felpa girocollo","felpa_girocollo.webp");
+        html+=card("Felpa mezza zip","Felpa mezza zip","","",state.secondoStrato==="Felpa mezza zip","felpa_mezza_zip.webp");
+        html+=card("Felpa full zip","Felpa full zip","","",state.secondoStrato==="Felpa full zip","felpa_full_zip.webp");
+        html+=card("Pile full zip","Pile full zip","","",state.secondoStrato==="Pile full zip","pile_full_zip.webp");
+        html+=card("Non serve","Non ne ho bisogno","⊘","",state.secondoStrato==="Non serve");
+
+        html+=`</div>`;
+
+        setScreen(html);
+        setNext(!!state.secondoStrato);
+
+        if(state.secondoStrato==="Non serve"){
+            document.getElementById("nextBtn").onclick=()=>{
+                pushStep("inverno_pantalone");
+            };
+        }else{
+            document.getElementById("nextBtn").onclick=goNext;
+        }
+
+        return;
+    }
+
+    if(currentStep==="inverno_secondo_colore"){
+        renderColors("Che colore preferisci?","secondoColore");
+        return;
+    }
+
+    if(currentStep==="inverno_secondo_cambi"){
+        renderCambi(state.secondoStrato,"secondoCambi");
+        return;
+    }
+
+    if(currentStep==="inverno_pantalone"){
+
+        let html=question(
+            "PANTALONE",
+            "Che tipo di pantalone preferisci?",
+            "Non stai scegliendo un modello definitivo: indicaci semplicemente lo stile che cerchi."
+        );
+
+        html+=`<div class="options">`;
+
+        html+=card("Tecnico","Pantalone tecnico","","Tessuto tecnico elasticizzato, pensato per libertà di movimento.",state.pantaloneModello==="Tecnico","pantalone_tecnico.webp");
+        html+=card("Cargo","Pantalone cargo","","Taglio da lavoro classico con tasconi laterali.",state.pantaloneModello==="Cargo","pantalone_cargo.webp");
+        html+=card("Jeans","Jeans da lavoro","","Jeans elasticizzato da lavoro con tasconi.",state.pantaloneModello==="Jeans","jeans_lavoro.webp");
+        html+=card("Non serve","Non ne ho bisogno","⊘","",state.pantaloneModello==="Non serve");
+
+        html+=`</div>`;
+
+        setScreen(html);
+        setNext(!!state.pantaloneModello);
+
+        if(state.pantaloneModello==="Non serve"){
+            document.getElementById("nextBtn").onclick=()=>{
+                pushStep("inverno_esterno");
+            };
+        }else{
+            document.getElementById("nextBtn").onclick=goNext;
+        }
+
+        return;
+    }
+
+    if(currentStep==="inverno_pantalone_colore"){
+        renderColors("Che colore preferisci per il pantalone?","pantaloneColore");
+        return;
+    }
+
+    if(currentStep==="inverno_pantalone_cambi"){
+        renderCambi("pantaloni","pantaloneCambi");
+        return;
+    }
+
+    if(currentStep==="inverno_esterno"){
+
+        let html=question(
+            "3° STRATO",
+            "Completiamo la protezione esterna",
+            "Puoi scegliere anche più di una soluzione."
+        );
+
+        html+=`<div class="options">`;
+
+        html+=card("Gilet softshell","Gilet softshell","","",state.esterno.includes("Gilet softshell"),"gilet_softshell.webp");
+        html+=card("Giubbino softshell","Giubbino softshell con cappuccio","","",state.esterno.includes("Giubbino softshell"),"giubbino_softshell_cappuccio.webp");
+        html+=card("Giubbotto pesante","Giubbotto pesante","","",state.esterno.includes("Giubbotto pesante"),"giubbotto_pesante.webp");
+        html+=card("Non serve","Non ne ho bisogno","⊘","",state.esterno.length===0);
+
+        html+=`</div>`;
+
+        setScreen(html);
+        setNext(true);
+
+        if(state.esterno.length===0){
+            document.getElementById("nextBtn").onclick=()=>{
+                pushStep("scarpa_classe");
+            };
+        }else{
+            document.getElementById("nextBtn").onclick=goNext;
+        }
+
+        return;
+    }
+
+    if(currentStep==="inverno_esterno_colore"){
+        renderColors("Che colore preferisci per lo strato esterno?","esternoColore");
+        return;
+    }
+
+    /* ======================
+       ESTATE
+    ====================== */
+
+    if(currentStep==="estate_primo"){
+
+        let html=question(
+            "1° STRATO",
+            "Scegli il capo estivo",
+            "Partiamo dal capo principale della divisa."
+        );
+
+        html+=`<div class="options compact">`;
+
+        html+=card("Polo M/C","Polo M/C","","",state.primoStrato==="Polo M/C","polo_mc.webp");
+        html+=card("T-Shirt","T-Shirt","","",state.primoStrato==="T-Shirt","tshirt.webp");
+        html+=card("Non serve","Non ne ho bisogno","⊘","",state.primoStrato==="Non serve");
+
+        html+=`</div>`;
+
+        setScreen(html);
+        setNext(!!state.primoStrato);
+
+        if(state.primoStrato==="Non serve"){
+            document.getElementById("nextBtn").onclick=()=>{
+                pushStep("estate_pantalone_tipo");
+            };
+        }else{
+            document.getElementById("nextBtn").onclick=goNext;
+        }
+
+        return;
+    }
+
+    if(currentStep==="estate_primo_colore"){
+        renderColors("Che colore preferisci?","primoColore");
+        return;
+    }
+
+    if(currentStep==="estate_primo_cambi"){
+        renderCambi(state.primoStrato,"primoCambi");
+        return;
+    }
+
+    if(currentStep==="estate_pantalone_tipo"){
+
+        let html=question(
+            "PANTALONE",
+            "Lungo o bermuda?",
+            "Puoi indicarci la soluzione che preferisci."
+        );
+
+        html+=`<div class="options compact">`;
+
+        html+=card("Lungo","Pantalone lungo","👖","",state.pantaloneTipo==="Lungo");
+        html+=card("Bermuda","Bermuda","☀️","",state.pantaloneTipo==="Bermuda");
+        html+=card("Entrambi","Entrambi","＋","",state.pantaloneTipo==="Entrambi");
+        html+=card("Non serve","Non ne ho bisogno","⊘","",state.pantaloneTipo==="Non serve");
+
+        html+=`</div>`;
+
+        setScreen(html);
+        setNext(!!state.pantaloneTipo);
+
+        if(state.pantaloneTipo==="Non serve"){
+            document.getElementById("nextBtn").onclick=()=>{
+                pushStep("estate_gilet");
+            };
+        }else{
+            document.getElementById("nextBtn").onclick=goNext;
+        }
+
+        return;
+    }
+
+    if(currentStep==="estate_pantalone_modello"){
+
+        let html=question(
+            "STILE",
+            state.pantaloneTipo==="Bermuda"
+                ? "Che tipo di bermuda preferisci?"
+                : "Che stile di pantalone preferisci?",
+            "È un'indicazione dello stile: il modello definitivo verrà proposto successivamente."
+        );
+
+        html+=`<div class="options">`;
+
+        const bermuda=state.pantaloneTipo==="Bermuda";
+
+        html+=card(
+            "Tecnico",
+            bermuda ? "Bermuda tecnico":"Pantalone tecnico",
+            "","",
+            state.pantaloneModello==="Tecnico",
+            bermuda ? "bermuda_tecnico.webp":"pantalone_tecnico.webp"
+        );
+
+        html+=card(
+            "Cargo",
+            bermuda ? "Bermuda cargo":"Pantalone cargo",
+            "","",
+            state.pantaloneModello==="Cargo",
+            bermuda ? "bermuda_cargo.webp":"pantalone_cargo.webp"
+        );
+
+        html+=card(
+            "Jeans",
+            bermuda ? "Bermuda jeans":"Jeans da lavoro",
+            "","",
+            state.pantaloneModello==="Jeans",
+            bermuda ? "bermuda_jeans.webp":"jeans_lavoro.webp"
+        );
+
+        html+=`</div>`;
+
+        setScreen(html);
+        setNext(!!state.pantaloneModello);
+        return;
+    }
+
+    if(currentStep==="estate_pantalone_colore"){
+        renderColors("Che colore preferisci?","pantaloneColore");
+        return;
+    }
+
+    if(currentStep==="estate_pantalone_cambi"){
+        renderCambi("capi","pantaloneCambi");
+        return;
+    }
+
+    if(currentStep==="estate_gilet"){
+
+        let html=question(
+            "GILET",
+            "Ti serve anche un gilet multitasche?",
+            "Il gilet viene considerato come un capo per dipendente."
+        );
+
+        html+=`<div class="options compact">`;
+
+        html+=card("Sì","Sì, gilet multitasche","","",state.giletEstivo==="Sì","gilet_multitasche.webp");
+        html+=card("No","No, continua","⊘","",state.giletEstivo==="No");
+
+        html+=`</div>`;
+
+        setScreen(html);
+        setNext(!!state.giletEstivo);
+
+        if(state.giletEstivo==="No"){
+            document.getElementById("nextBtn").onclick=()=>{
+                pushStep("scarpa_classe");
+            };
+        }else{
+            document.getElementById("nextBtn").onclick=goNext;
+        }
+
+        return;
+    }
+
+    if(currentStep==="estate_gilet_colore"){
+        renderColors("Che colore preferisci per il gilet?","giletColore");
+        return;
+    }
+
+    /* ======================
+       SCARPE
+    ====================== */
+
+    if(currentStep==="scarpa_classe"){
+
+        let html=question(
+            "CALZATURE",
+            "Che tipo di protezione stai cercando?",
+            "Se non conosci la differenza, puoi lasciarci il compito di consigliarti."
+        );
+
+        html+=`<div class="options compact">`;
+
+        html+=card(
+            "S1P / S1PS",
+            "S1P / S1PS",
+            "🥾",
+            "Indicata soprattutto per ambienti asciutti. Puntale di sicurezza e protezione antiperforazione.",
+            state.scarpaClasse==="S1P / S1PS"
+        );
+
+        html+=card(
+            "S3 / S3S",
+            "S3 / S3S",
+            "🥾",
+            "Maggiore protezione della tomaia contro penetrazione e assorbimento dell'acqua, con puntale e protezione antiperforazione.",
+            state.scarpaClasse==="S3 / S3S"
+        );
+
+        html+=card(
+            "Consigliatemi",
+            "Non so quale scegliere",
+            "?",
+            "Nessun problema: individueremo insieme la soluzione adatta.",
+            state.scarpaClasse==="Consigliatemi"
+        );
+
+        html+=card(
+            "Non serve",
+            "Non ne ho bisogno",
+            "⊘",
+            "",
+            state.scarpaClasse==="Non serve"
+        );
+
+        html+=`</div>`;
+
+        setScreen(html);
+        setNext(!!state.scarpaClasse);
+
+        if(["Consigliatemi","Non serve"].includes(state.scarpaClasse)){
+            document.getElementById("nextBtn").onclick=()=>{
+                pushStep("stampa");
+            };
+        }else{
+            document.getElementById("nextBtn").onclick=goNext;
+        }
+
+        return;
+    }
+
+    if(currentStep==="scarpa_altezza"){
+
+        const s1=state.scarpaClasse==="S1P / S1PS";
+
+        let html=question(
+            "CALZATURE",
+            "Preferisci una scarpa alta o bassa?",
+            state.scarpaClasse
+        );
+
+        html+=`<div class="options compact">`;
+
+        html+=card(
+            "Bassa",
+            "Scarpa bassa",
+            "","",
+            state.scarpaAltezza==="Bassa",
+            s1 ? "scarpa_bassa_s1p_s1ps.webp":"scarpa_bassa_s3_s3s.webp"
+        );
+
+        html+=card(
+            "Alta",
+            "Scarpa alta",
+            "","",
+            state.scarpaAltezza==="Alta",
+            s1 ? "scarpa_alta_s1p_s1ps.webp":"scarpa_alta_s3_s3s.webp"
+        );
+
+        html+=`</div>`;
+
+        setScreen(html);
+        setNext(!!state.scarpaAltezza);
+        return;
+    }
+
+    /* ======================
+       STAMPA
+    ====================== */
+
+    if(currentStep==="stampa"){
+
+        let html=question(
+            "PERSONALIZZAZIONE",
+            "Vuoi personalizzare i capi?",
+            "Indicaci dove immagini il logo della tua azienda."
+        );
+
+        html+=`<div class="options compact">`;
+
+        html+=card("Cuore","Lato cuore","👕","",state.stampa==="Cuore");
+        html+=card("Schiena","Schiena","↩","",state.stampa==="Schiena");
+        html+=card("Entrambe","Cuore + schiena","＋","",state.stampa==="Entrambe");
+        html+=card("Nessuna","Nessuna stampa","⊘","",state.stampa==="Nessuna");
+
+        html+=`</div>`;
+
+        setScreen(html);
+        setNext(!!state.stampa);
+
+        if(state.stampa==="Nessuna"){
+            document.getElementById("nextBtn").onclick=()=>{
+                pushStep("dpi");
+            };
+        }else{
+            document.getElementById("nextBtn").onclick=goNext;
+        }
+
+        return;
+    }
+
+    if(currentStep==="logo"){
+
+        let html=question(
+            "LOGO",
+            "Sei già in possesso del logo?",
+            "Non devi caricarlo adesso. Lo richiederemo successivamente durante la trattativa."
+        );
+
+        html+=`<div class="options compact">`;
+
+        html+=card("Sì","Sì","✓","Ho già il file del logo.",state.logo==="Sì");
+        html+=card("No","No","×","Lo definiremo successivamente.",state.logo==="No");
+
+        html+=`</div>`;
+
+        setScreen(html);
+        setNext(!!state.logo);
+        return;
+    }
+
+    /* ======================
+       DPI
+    ====================== */
+
+    if(currentStep==="dpi"){
+
+        let html=question(
+            "DPI E ACCESSORI",
+            "Vuoi aggiungere altri articoli?",
+            "Puoi selezionare più opzioni."
+        );
+
+        html+=`<div class="options">`;
+
+        html+=card("Guanti","Guanti da lavoro","","",state.dpi.includes("Guanti"),"dpi_guanti.webp");
+        html+=card("Occhiali","Occhiali di protezione","","",state.dpi.includes("Occhiali"),"dpi_occhiali.webp");
+        html+=card("Alta visibilità","Alta visibilità","","",state.dpi.includes("Alta visibilità"),"dpi_alta_visibilita.webp");
+        html+=card("Elmetto","Elmetto","","",state.dpi.includes("Elmetto"),"dpi_elmetto.webp");
+        html+=card("Cuffie","Cuffie antirumore","","",state.dpi.includes("Cuffie"),"dpi_cuffie_antirumore.webp");
+        html+=card("Non serve","Non ne ho bisogno","⊘","",state.dpi.length===0);
+
+        html+=`</div>`;
+
+        setScreen(html);
+        setNext(true);
+        return;
+    }
+
+    /* ======================
+       RIEPILOGO
+    ====================== */
+
+    if(currentStep==="riepilogo"){
+
+        let rows=[];
+
+        rows.push(["Persone",state.persone]);
+        rows.push(["Settore",state.settore]);
+        rows.push(["Stagione",state.stagione]);
+
+        if(state.primoStrato && state.primoStrato!=="Non serve"){
+            rows.push([
+                "Primo strato",
+                `${state.primoStrato} · ${state.primoColore} · ${state.primoCambi} per persona`
+            ]);
+        }
+
+        if(state.stagione==="Invernale" &&
+           state.secondoStrato &&
+           state.secondoStrato!=="Non serve"){
+
+            rows.push([
+                "Secondo strato",
+                `${state.secondoStrato} · ${state.secondoColore} · ${state.secondoCambi} per persona`
+            ]);
+        }
+
+        if(state.pantaloneModello &&
+           state.pantaloneTipo!=="Non serve" &&
+           state.pantaloneModello!=="Non serve"){
+
+            rows.push([
+                "Pantalone",
+                `${state.pantaloneTipo ? state.pantaloneTipo+" · ":""}${state.pantaloneModello} · ${state.pantaloneColore} · ${state.pantaloneCambi} per persona`
+            ]);
+        }
+
+        if(state.esterno.length){
+            rows.push([
+                "Strato esterno",
+                `${state.esterno.join(", ")} · ${state.esternoColore} · 1 per persona`
+            ]);
+        }
+
+        if(state.giletEstivo==="Sì"){
+            rows.push([
+                "Gilet multitasche",
+                `${state.giletColore} · 1 per persona`
+            ]);
+        }
+
+        if(state.scarpaClasse &&
+           state.scarpaClasse!=="Non serve"){
+
+            rows.push([
+                "Calzature",
+                state.scarpaClasse==="Consigliatemi"
+                    ? "Da definire insieme"
+                    : `${state.scarpaClasse} · ${state.scarpaAltezza} · 1 paio per persona`
+            ]);
+        }
+
+        rows.push(["Personalizzazione",state.stampa]);
+
+        if(state.stampa!=="Nessuna"){
+            rows.push(["Logo disponibile",state.logo]);
+        }
+
+        rows.push([
+            "DPI",
+            state.dpi.length ? state.dpi.join(", ") : "Nessuno"
+        ]);
+
+        let html=question(
+            "RIEPILOGO",
+            "La tua idea di fornitura è pronta",
+            "Questa non è una selezione definitiva di prodotti: ci permette di capire come vorresti vestire il tuo personale e preparare una proposta più mirata."
+        );
+
+        html+=`
+        <div class="summary">
+
+            <div class="summary-head">
+                <h2>La tua fornitura</h2>
+                <div>${state.persone} persone · ${state.settore} · ${state.stagione}</div>
+            </div>
+
+            <div class="summary-body">
+
+                ${rows.map(r=>`
+                    <div class="summary-row">
+                        <span>${r[0]}</span>
+                        <strong>${r[1] || "—"}</strong>
+                    </div>
+                `).join("")}
+
+                <button class="big-cta" onclick="pushStep('contatti')">
+                    RICHIEDI LA TUA PROPOSTA
+                </button>
+
+            </div>
+        </div>`;
+
+        setScreen(html);
+
+        document.getElementById("bottomNav").style.display="none";
+        return;
+    }
+
+    /* ======================
+       CONTATTI
+    ====================== */
+
+    if(currentStep==="contatti"){
+
+        document.getElementById("bottomNav").style.display="none";
+
+        let html=question(
+            "ULTIMO PASSAGGIO",
+            "A chi prepariamo la proposta?",
+            "Inserisci i riferimenti dell'azienda. La configurazione verrà riportata automaticamente nel messaggio."
+        );
+
+        html+=`
+        <div class="form-box">
+
+            <div class="field">
+                <label>Nome azienda</label>
+                <input id="azienda" placeholder="Es. Rossi S.r.l.">
+            </div>
+
+            <div class="field">
+                <label>Nome referente</label>
+                <input id="referente" placeholder="Nome e cognome">
+            </div>
+
+            <div class="field">
+                <label>Telefono</label>
+                <input id="telefono" type="tel" placeholder="Numero di telefono">
+            </div>
+
+            <div class="field">
+                <label>Email</label>
+                <input id="email" type="email" placeholder="Email aziendale">
+            </div>
+
+            <button class="big-cta" onclick="sendWhatsApp()">
+                INVIA RICHIESTA SU WHATSAPP
+            </button>
+
+            <button class="nav-btn back"
+                style="width:100%;margin-top:10px"
+                onclick="currentStep='riepilogo';document.getElementById('bottomNav').style.display='block';render();">
+                ‹ TORNA AL RIEPILOGO
+            </button>
+
+        </div>`;
+
+        setScreen(html);
+        return;
+    }
+}
+
+/* ===========================
+   WHATSAPP
+=========================== */
+
+function sendWhatsApp(){
+
+    const azienda=document.getElementById("azienda").value.trim();
+    const referente=document.getElementById("referente").value.trim();
+    const telefono=document.getElementById("telefono").value.trim();
+    const email=document.getElementById("email").value.trim();
+
+    if(!azienda || !referente || !telefono){
+        alert("Inserisci almeno azienda, referente e telefono.");
+        return;
+    }
+
+    let righe=[
+        "Buongiorno, vorrei richiedere una proposta per una fornitura aziendale.",
+        "",
+        "AZIENDA: "+azienda,
+        "REFERENTE: "+referente,
+        "TELEFONO: "+telefono,
+        email ? "EMAIL: "+email : "",
+        "",
+        "CONFIGURAZIONE:",
+        "Persone: "+state.persone,
+        "Settore: "+state.settore,
+        "Stagione: "+state.stagione
+    ];
+
+    if(state.primoStrato && state.primoStrato!=="Non serve"){
+        righe.push(
+            "Primo strato: "+
+            state.primoStrato+" / "+
+            state.primoColore+" / "+
+            state.primoCambi+" per persona"
+        );
+    }
+
+    if(state.secondoStrato && state.secondoStrato!=="Non serve"){
+        righe.push(
+            "Secondo strato: "+
+            state.secondoStrato+" / "+
+            state.secondoColore+" / "+
+            state.secondoCambi+" per persona"
+        );
+    }
+
+    if(state.pantaloneModello && state.pantaloneModello!=="Non serve"){
+        righe.push(
+            "Pantalone: "+
+            (state.pantaloneTipo ? state.pantaloneTipo+" / ":"")+
+            state.pantaloneModello+" / "+
+            state.pantaloneColore+" / "+
+            state.pantaloneCambi+" per persona"
+        );
+    }
+
+    if(state.esterno.length){
+        righe.push(
+            "Strato esterno: "+
+            state.esterno.join(", ")+" / "+
+            state.esternoColore
+        );
+    }
+
+    if(state.giletEstivo==="Sì"){
+        righe.push(
+            "Gilet multitasche: "+
+            state.giletColore+
+            " / 1 per persona"
+        );
+    }
+
+    if(state.scarpaClasse && state.scarpaClasse!=="Non serve"){
+        righe.push(
+            "Scarpe: "+
+            state.scarpaClasse+
+            (state.scarpaAltezza ? " / "+state.scarpaAltezza:"")
+        );
+    }
+
+    righe.push("Personalizzazione: "+state.stampa);
+
+    if(state.stampa!=="Nessuna"){
+        righe.push("Logo già disponibile: "+state.logo);
+    }
+
+    righe.push(
+        "DPI: "+
+        (state.dpi.length ? state.dpi.join(", ") : "Nessuno")
+    );
+
+    const testo=righe.filter(Boolean).join("\n");
+
+    window.open(
+        "https://wa.me/393520262607?text="+encodeURIComponent(testo),
+        "_blank"
+    );
+}
+
+/* ===========================
+   AVVIO
+=========================== */
+
+document.getElementById("backBtn").onclick=goBack;
+document.getElementById("nextBtn").onclick=goNext;
+
+render();
+
+</script>
+
+</body>
+</html>
