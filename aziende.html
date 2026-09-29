@@ -737,9 +737,11 @@ function setScreen(html){
     screen.offsetHeight;
     screen.style.animation="entra .35s ease";
     screen.innerHTML=html;
+
+    document.getElementById("nextBtn").onclick=goNext;
+
     updateTop();
 }
-
 function question(label,title,desc=""){
     return `
     <div class="question">
