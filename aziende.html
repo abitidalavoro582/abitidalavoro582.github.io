@@ -669,6 +669,13 @@ const state = {
     pantaloneColore:"",
     pantaloneCambi:"",
 
+    estivoLungoModello:"",
+    estivoLungoColore:"",
+    estivoLungoCambi:"",
+    estivoBermudaModello:"",
+    estivoBermudaColore:"",
+    estivoBermudaCambi:"",
+
     esterno:[],
     esternoColore:"",
 
@@ -827,10 +834,13 @@ function goNext(){
         estate_primo_colore:"estate_primo_cambi",
         estate_primo_cambi:"estate_pantalone_tipo",
 
-        estate_pantalone_tipo:"estate_pantalone_modello",
-        estate_pantalone_modello:"estate_pantalone_colore",
-        estate_pantalone_colore:"estate_pantalone_cambi",
-        estate_pantalone_cambi:"estate_gilet",
+        estate_pantalone_lungo_modello:"estate_pantalone_lungo_colore",
+        estate_pantalone_lungo_colore:"estate_pantalone_lungo_cambi",
+        estate_pantalone_lungo_cambi:"estate_gilet",
+
+        estate_bermuda_modello:"estate_bermuda_colore",
+        estate_bermuda_colore:"estate_bermuda_cambi",
+        estate_bermuda_cambi:"estate_gilet",
 
         estate_gilet:"estate_gilet_colore",
         estate_gilet_colore:"scarpa_classe",
@@ -889,9 +899,12 @@ function selectCurrent(value){
         estate_primo_cambi:"primoCambi",
 
         estate_pantalone_tipo:"pantaloneTipo",
-        estate_pantalone_modello:"pantaloneModello",
-        estate_pantalone_colore:"pantaloneColore",
-        estate_pantalone_cambi:"pantaloneCambi",
+        estate_pantalone_lungo_modello:"estivoLungoModello",
+        estate_pantalone_lungo_colore:"estivoLungoColore",
+        estate_pantalone_lungo_cambi:"estivoLungoCambi",
+        estate_bermuda_modello:"estivoBermudaModello",
+        estate_bermuda_colore:"estivoBermudaColore",
+        estate_bermuda_cambi:"estivoBermudaCambi",
 
         estate_gilet:"giletEstivo",
         estate_gilet_colore:"giletColore",
@@ -1307,7 +1320,7 @@ function render(){
         let html=question(
             "PANTALONE",
             "Lungo o bermuda?",
-            "Puoi indicarci la soluzione che preferisci."
+            "Puoi indicarci una sola soluzione oppure configurarle entrambe separatamente."
         );
 
         html+=`<div class="options compact">`;
@@ -1322,69 +1335,75 @@ function render(){
         setScreen(html);
         setNext(!!state.pantaloneTipo);
 
-        if(state.pantaloneTipo==="Non serve"){
-            document.getElementById("nextBtn").onclick=()=>{
-                pushStep("estate_gilet");
-            };
-        }else{
-            document.getElementById("nextBtn").onclick=goNext;
-        }
+        document.getElementById("nextBtn").onclick=()=>{
+            if(state.pantaloneTipo==="Non serve") pushStep("estate_gilet");
+            else if(state.pantaloneTipo==="Bermuda") pushStep("estate_bermuda_modello");
+            else pushStep("estate_pantalone_lungo_modello");
+        };
 
         return;
     }
 
-    if(currentStep==="estate_pantalone_modello"){
+    if(currentStep==="estate_pantalone_lungo_modello"){
 
         let html=question(
-            "STILE",
-            state.pantaloneTipo==="Bermuda"
-                ? "Che tipo di bermuda preferisci?"
-                : "Che stile di pantalone preferisci?",
+            "PANTALONE LUNGO",
+            "Che stile di pantalone preferisci?",
             "È un'indicazione dello stile: il modello definitivo verrà proposto successivamente."
         );
 
         html+=`<div class="options">`;
-
-        const bermuda=state.pantaloneTipo==="Bermuda";
-
-        html+=card(
-            "Tecnico",
-            bermuda ? "Bermuda tecnico":"Pantalone tecnico",
-            "","",
-            state.pantaloneModello==="Tecnico",
-            bermuda ? "bermuda_tecnico.webp":"pantalone_tecnico.webp"
-        );
-
-        html+=card(
-            "Cargo",
-            bermuda ? "Bermuda cargo":"Pantalone cargo",
-            "","",
-            state.pantaloneModello==="Cargo",
-            bermuda ? "bermuda_cargo.webp":"pantalone_cargo.webp"
-        );
-
-        html+=card(
-            "Jeans",
-            bermuda ? "Bermuda jeans":"Jeans da lavoro",
-            "","",
-            state.pantaloneModello==="Jeans",
-            bermuda ? "bermuda_jeans.webp":"jeans_lavoro.webp"
-        );
-
+        html+=card("Tecnico","Pantalone tecnico","","",state.estivoLungoModello==="Tecnico","pantalone_tecnico.webp");
+        html+=card("Cargo","Pantalone cargo","","",state.estivoLungoModello==="Cargo","pantalone_cargo.webp");
+        html+=card("Jeans","Jeans da lavoro","","",state.estivoLungoModello==="Jeans","jeans_lavoro.webp");
         html+=`</div>`;
 
         setScreen(html);
-        setNext(!!state.pantaloneModello);
+        setNext(!!state.estivoLungoModello);
         return;
     }
 
-    if(currentStep==="estate_pantalone_colore"){
-        renderColors("Che colore preferisci?","pantaloneColore");
+    if(currentStep==="estate_pantalone_lungo_colore"){
+        renderColors("Che colore preferisci per il pantalone lungo?","estivoLungoColore");
         return;
     }
 
-    if(currentStep==="estate_pantalone_cambi"){
-        renderCambi("capi","pantaloneCambi");
+    if(currentStep==="estate_pantalone_lungo_cambi"){
+        renderCambi("pantaloni lunghi","estivoLungoCambi");
+        if(state.pantaloneTipo==="Entrambi"){
+            document.getElementById("nextBtn").onclick=()=>{
+                pushStep("estate_bermuda_modello");
+            };
+        }
+        return;
+    }
+
+    if(currentStep==="estate_bermuda_modello"){
+
+        let html=question(
+            "BERMUDA",
+            "Che tipo di bermuda preferisci?",
+            "È un'indicazione dello stile: il modello definitivo verrà proposto successivamente."
+        );
+
+        html+=`<div class="options">`;
+        html+=card("Tecnico","Bermuda tecnico","","",state.estivoBermudaModello==="Tecnico","bermuda_tecnico.webp");
+        html+=card("Cargo","Bermuda cargo","","",state.estivoBermudaModello==="Cargo","bermuda_cargo.webp");
+        html+=card("Jeans","Bermuda jeans","","",state.estivoBermudaModello==="Jeans","bermuda_jeans.webp");
+        html+=`</div>`;
+
+        setScreen(html);
+        setNext(!!state.estivoBermudaModello);
+        return;
+    }
+
+    if(currentStep==="estate_bermuda_colore"){
+        renderColors("Che colore preferisci per il bermuda?","estivoBermudaColore");
+        return;
+    }
+
+    if(currentStep==="estate_bermuda_cambi"){
+        renderCambi("bermuda","estivoBermudaCambi");
         return;
     }
 
@@ -1636,13 +1655,24 @@ return;
             ]);
         }
 
-        if(state.pantaloneModello &&
-           state.pantaloneTipo!=="Non serve" &&
-           state.pantaloneModello!=="Non serve"){
-
+        if(state.stagione==="Invernale" && state.pantaloneModello && state.pantaloneModello!=="Non serve"){
             rows.push([
                 "Pantalone",
-                `${state.pantaloneTipo ? state.pantaloneTipo+" · ":""}${state.pantaloneModello} · ${state.pantaloneColore} · ${state.pantaloneCambi} per persona`
+                `${state.pantaloneModello} · ${state.pantaloneColore} · ${state.pantaloneCambi} per persona`
+            ]);
+        }
+
+        if(state.stagione==="Estivo" && ["Lungo","Entrambi"].includes(state.pantaloneTipo) && state.estivoLungoModello){
+            rows.push([
+                "Pantalone lungo",
+                `${state.estivoLungoModello} · ${state.estivoLungoColore} · ${state.estivoLungoCambi} per persona`
+            ]);
+        }
+
+        if(state.stagione==="Estivo" && ["Bermuda","Entrambi"].includes(state.pantaloneTipo) && state.estivoBermudaModello){
+            rows.push([
+                "Bermuda",
+                `${state.estivoBermudaModello} · ${state.estivoBermudaColore} · ${state.estivoBermudaCambi} per persona`
             ]);
         }
 
@@ -1820,13 +1850,30 @@ function sendWhatsApp(){
         );
     }
 
-    if(state.pantaloneModello && state.pantaloneModello!=="Non serve"){
+    if(state.stagione==="Invernale" && state.pantaloneModello && state.pantaloneModello!=="Non serve"){
         righe.push(
             "Pantalone: "+
-            (state.pantaloneTipo ? state.pantaloneTipo+" / ":"")+
             state.pantaloneModello+" / "+
             state.pantaloneColore+" / "+
             state.pantaloneCambi+" per persona"
+        );
+    }
+
+    if(state.stagione==="Estivo" && ["Lungo","Entrambi"].includes(state.pantaloneTipo) && state.estivoLungoModello){
+        righe.push(
+            "Pantalone lungo: "+
+            state.estivoLungoModello+" / "+
+            state.estivoLungoColore+" / "+
+            state.estivoLungoCambi+" per persona"
+        );
+    }
+
+    if(state.stagione==="Estivo" && ["Bermuda","Entrambi"].includes(state.pantaloneTipo) && state.estivoBermudaModello){
+        righe.push(
+            "Bermuda: "+
+            state.estivoBermudaModello+" / "+
+            state.estivoBermudaColore+" / "+
+            state.estivoBermudaCambi+" per persona"
         );
     }
 
