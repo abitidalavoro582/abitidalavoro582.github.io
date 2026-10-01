@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Abiti da Lavoro di Alessio Vitale | Roma</title>
+  <meta name="description" content="Abbigliamento da lavoro e professionale a Roma. Calzature antinfortunistiche, DPI, divise professionali, personalizzazioni e forniture per aziende.">
+  <meta name="theme-color" content="#244c3d">
+
+  <style>
+    :root{
+      --verde:#244c3d;
+      --verde2:#32624f;
+      --verdechiaro:#edf4f0;
+      --oro:#e8b928;
+      --testo:#202622;
+      --grigio:#66706a;
+      --sfondo:#f6f7f5;
+      --bianco:#ffffff;
+      --bordo:#e2e7e3;
+      --ombra:0 12px 35px rgba(20,45,35,.10);
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--testo);
+      background:var(--bianco);
+      line-height:1.6;
+    }
+
+    img{
+      display:block;
+      max-width:100%;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .container{
+      width:min(1180px,92%);
+      margin:auto;
+    }
+
+    /* HEADER */
+    header{
+      background:rgba(255,255,255,.97);
+      border-bottom:1px solid var(--bordo);
+      position:sticky;
+      top:0;
+      z-index:100;
+    }
+
+    .nav{
+      min-height:70px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .brand{
+      font-weight:800;
+      color:var(--verde);
+      font-size:18px;
+    }
+
+    nav{
+      display:flex;
+      align-items:center;
+      gap:24px;
+      font-size:14px;
+      font-weight:700;
+    }
+
+    nav a:hover{
+      color:var(--verde2);
+    }
+
+    .nav-azienda{
+      background:var(--verde);
+      color:white;
+      padding:10px 17px;
+      border-radius:8px;
+    }
+
+    .nav-azienda:hover{
+      color:white;
+      background:var(--verde2);
+    }
+
+    /* IDENTITA */
+    .identity{
+      padding:40px 0 25px;
+      background:#fff;
+    }
+
+    .logo-wrap{
+      max-width:1050px;
+      margin:auto;
+    }
+
+    .logo-wrap img{
+      width:100%;
+      height:auto;
+      object-fit:contain;
+    }
+
+    /* INTRO */
+    .intro{
+      text-align:center;
+      padding:25px 0 45px;
+    }
+
+    .eyebrow{
+      color:var(--verde2);
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:1.4px;
+      text-transform:uppercase;
+      margin-bottom:10px;
+    }
+
+    h1{
+      color:var(--verde);
+      font-size:clamp(30px,5vw,52px);
+      line-height:1.08;
+      max-width:850px;
+      margin:0 auto 18px;
+    }
+
+    .intro p{
+      color:var(--grigio);
+      max-width:760px;
+      margin:auto;
+      font-size:18px;
+    }
+
+    /* FOTO NEGOZIO */
+    .store{
+      padding-bottom:70px;
+    }
+
+    .store-photo{
+      overflow:hidden;
+      border-radius:20px;
+      box-shadow:var(--ombra);
+      background:#eee;
+    }
+
+    .store-photo img{
+      width:100%;
+      max-height:720px;
+      object-fit:cover;
+    }
+
+    .store-caption{
+      text-align:center;
+      margin-top:20px;
+    }
+
+    .store-caption h2{
+      color:var(--verde);
+      font-size:28px;
+      margin-bottom:6px;
+    }
+
+    .store-caption p{
+      color:var(--grigio);
+    }
+
+    /* AZIENDE */
+    .business{
+      background:var(--verde);
+      color:white;
+      padding:70px 0;
+    }
+
+    .business-grid{
+      display:grid;
+      grid-template-columns:1.3fr .7fr;
+      align-items:center;
+      gap:50px;
+    }
+
+    .business .eyebrow{
+      color:#f2d45f;
+    }
+
+    .business h2{
+      font-size:clamp(30px,4vw,46px);
+      line-height:1.1;
+      margin-bottom:18px;
+    }
+
+    .business p{
+      color:#e2ebe6;
+      max-width:680px;
+      font-size:17px;
+    }
+
+    .business-points{
+      display:grid;
+      gap:13px;
+      margin-top:25px;
+    }
+
+    .business-point{
+      display:flex;
+      align-items:flex-start;
+      gap:11px;
+    }
+
+    .check{
+      color:var(--oro);
+      font-weight:bold;
+    }
+
+    .business-action{
+      background:white;
+      color:var(--testo);
+      padding:30px;
+      border-radius:18px;
+    }
+
+    .business-action strong{
+      color:var(--verde);
+      display:block;
+      font-size:21px;
+      margin-bottom:8px;
+    }
+
+    .business-action p{
+      color:var(--grigio);
+      font-size:15px;
+      margin-bottom:20px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background:var(--oro);
+      color:#202622;
+      font-weight:800;
+      padding:13px 20px;
+      border-radius:9px;
+      transition:.2s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+    }
+
+    /* SETTORI */
+    .sectors{
+      padding:80px 0;
+      background:var(--sfondo);
+    }
+
+    .section-heading{
+      text-align:center;
+      max-width:750px;
+      margin:0 auto 40px;
+    }
+
+    .section-heading h2{
+      color:var(--verde);
+      font-size:clamp(30px,4vw,42px);
+      margin-bottom:10px;
+    }
+
+    .section-heading p{
+      color:var(--grigio);
+    }
+
+    .sector-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:20px;
+    }
+
+    .sector-card{
+      position:relative;
+      overflow:hidden;
+      min-height:300px;
+      border-radius:16px;
+      background:#ddd;
+      box-shadow:0 7px 22px rgba(20,45,35,.08);
+      transition:.25s ease;
+    }
+
+    .sector-card:hover{
+      transform:translateY(-5px);
+      box-shadow:0 15px 35px rgba(20,45,35,.15);
+    }
+
+    .sector-card img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:.3s ease;
+    }
+
+    .sector-card:hover img{
+      transform:scale(1.025);
+    }
+
+    .sector-overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+        to top,
+        rgba(16,35,28,.88) 0%,
+        rgba(16,35,28,.30) 48%,
+        rgba(16,35,28,.03) 100%
+      );
+    }
+
+    .sector-name{
+      position:absolute;
+      left:20px;
+      right:20px;
+      bottom:18px;
+      color:white;
+      font-size:21px;
+      font-weight:800;
+    }
+
+    .sector-name span{
+      display:block;
+      color:#e9c84a;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      margin-bottom:3px;
+    }
+
+    /* SERVIZI */
+    .services{
+      padding:80px 0;
+    }
+
+    .service-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+      margin-top:35px;
+    }
+
+    .service{
+      padding:30px;
+      border:1px solid var(--bordo);
+      border-radius:16px;
+      background:white;
+    }
+
+    .service-number{
+      width:42px;
+      height:42px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:50%;
+      background:var(--verdechiaro);
+      color:var(--verde);
+      font-weight:900;
+      margin-bottom:18px;
+    }
+
+    .service h3{
+      color:var(--verde);
+      margin-bottom:8px;
+      font-size:20px;
+    }
+
+    .service p{
+      color:var(--grigio);
+      font-size:15px;
+    }
+
+    /* CONTATTI */
+    .contact{
+      background:#202622;
+      color:white;
+      padding:70px 0;
+    }
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:60px;
+    }
+
+    .contact h2{
+      font-size:35px;
+      margin-bottom:14px;
+    }
+
+    .contact p{
+      color:#cfd6d2;
+    }
+
+    .contact-list{
+      margin-top:25px;
+      display:grid;
+      gap:12px;
+    }
+
+    .contact-list a,
+    .contact-list div{
+      color:white;
+    }
+
+    .contact-list strong{
+      color:#e7c64a;
+    }
+
+    .hours{
+      background:#2a312d;
+      border:1px solid #3a443e;
+      padding:28px;
+      border-radius:16px;
+    }
+
+    .hours h3{
+      margin-bottom:17px;
+      font-size:21px;
+    }
+
+    .hour-row{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      padding:10px 0;
+      border-bottom:1px solid #3d4741;
+    }
+
+    .hour-row:last-child{
+      border-bottom:0;
+    }
+
+    /* FOOTER */
+    footer{
+      background:#171b18;
+      color:#aeb7b1;
+      padding:22px 0;
+      text-align:center;
+      font-size:13px;
+    }
+
+    /* MOBILE */
+    @media(max-width:950px){
+      .sector-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .business-grid,
+      .contact-grid{
+        grid-template-columns:1fr;
+      }
+
+      .service-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media(max-width:700px){
+      nav a:not(.nav-azienda){
+        display:none;
+      }
+
+      .brand{
+        font-size:15px;
+      }
+
+      .nav-azienda{
+        padding:9px 12px;
+        font-size:12px;
+      }
+
+      .identity{
+        padding-top:20px;
+      }
+
+      .intro{
+        padding-top:15px;
+      }
+
+      .store{
+        padding-bottom:50px;
+      }
+
+      .store-photo{
+        border-radius:12px;
+      }
+
+      .sector-grid{
+        grid-template-columns:1fr;
+        gap:16px;
+      }
+
+      .sector-card{
+        min-height:330px;
+      }
+
+      .business,
+      .sectors,
+      .services,
+      .contact{
+        padding:55px 0;
+      }
+
+      .contact-grid{
+        gap:30px;
+      }
+    
+      .hero-grid{
+        display:flex;
+        flex-direction:column;
+      }
+
+      .center-brand{ order:1; }
+      .sector-panel{ order:2; }
+      .business-panel{ order:3; }
+}
+  </style>
+
+<style>
+/* HOME V2 PROVA - layout compatto */
+@media(min-width:951px){
+  main#home{display:grid;grid-template-columns:minmax(270px,.82fr) minmax(430px,1.55fr) minmax(300px,.9fr);gap:22px;width:min(1420px,94%);margin:26px auto 0;align-items:start}
+  .identity{grid-column:2;grid-row:1;padding:18px 0;background:#fff;align-self:stretch;display:flex;align-items:center;min-height:610px}
+  .identity .container{width:100%}.logo-wrap{max-width:720px}
+  .intro{display:none}
+  .sectors{grid-column:1;grid-row:1;padding:22px 16px;background:#f7f9f8;border:1px solid var(--bordo);border-radius:20px;min-height:610px}
+  .sectors .container{width:100%}.sectors .section-heading{text-align:left;margin:0 0 14px}.sectors .section-heading h2{font-size:28px;line-height:1.08}.sectors .section-heading p{font-size:13px}
+  .sector-grid{grid-template-columns:1fr;gap:8px}.sector-card{min-height:58px;border-radius:12px;box-shadow:none;border:1px solid var(--bordo);background:white}
+  .sector-card img{width:72px;position:absolute;left:0;top:0;bottom:0;height:100%;object-fit:cover}.sector-overlay{display:none}
+  .sector-name{left:86px;right:34px;bottom:auto;top:50%;transform:translateY(-50%);color:var(--verde);font-size:14px;line-height:1.15}.sector-name span{display:none}
+  .sector-card:after{content:'›';position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:24px;color:var(--verde)}
+  .business{grid-column:3;grid-row:1;padding:26px 22px;border-radius:20px;background:linear-gradient(145deg,#f7fbf8,#eaf4ef);color:var(--testo);min-height:610px;border:1px solid var(--bordo)}
+  .business .container{width:100%}.business-grid{display:block}.business .eyebrow{color:var(--verde2)}.business h2{color:var(--verde);font-size:36px}.business p{color:#43534b;font-size:15px}.business-points{margin-top:20px}.business-action{margin-top:26px;padding:0;background:transparent}.business-action strong{display:none}.business-action p{display:none}.business .btn{width:100%;background:var(--verde);color:white;padding:15px 16px}
+  .store{grid-column:1/3;grid-row:2;padding:0;margin-top:0}.store .container{width:100%}.store-photo{height:430px}.store-photo img{height:100%;object-fit:cover}.store-caption{text-align:left;margin:14px 4px 0}.store-caption h2{font-size:25px}
+  .contact{grid-column:3;grid-row:2;padding:30px 24px;border-radius:20px;background:var(--verde);align-self:stretch}.contact .container{width:100%}.contact-grid{grid-template-columns:1fr;gap:22px}.contact h2{font-size:28px}.contact .hours{padding:18px;background:rgba(255,255,255,.06)}
+  .services{grid-column:1/-1;grid-row:3;padding:60px 0}.services .container{width:100%}
+  footer{margin-top:60px}
+}
+@media(max-width:950px){
+  .identity{padding:18px 0 8px}.logo-wrap{max-width:760px}.intro{padding:12px 0 25px}
+  .sectors{padding:40px 0}.sector-grid{grid-template-columns:1fr;gap:10px}.sector-card{min-height:78px}.sector-card img{object-position:center 30%}
+  .business{padding:45px 0}.store{padding-bottom:35px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="#home">Abiti da Lavoro Vitale</a>
+
+    <nav>
+      <a href="#negozio">Il negozio</a>
+      <a href="#settori">Settori</a>
+      <a href="#servizi">Servizi</a>
+      <a href="#contatti">Contatti</a>
+      <a class="nav-azienda" href="#aziende">Sei un'azienda?</a>
+    </nav>
+  </div>
+</header>
+
+<main id="home">
+
+  <!-- IDENTITA -->
+  <section class="identity">
+    <div class="container">
+      <div class="logo-wrap">
+        <img src="logo.webp"
+             alt="Abiti da Lavoro di Alessio Vitale - Antinfortunistica Professionale e DPI">
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRODUZIONE -->
+  <section class="intro">
+    <div class="container">
+      <div class="eyebrow">Abbigliamento professionale a Roma</div>
+
+      <h1>Il tuo lavoro, il nostro abbigliamento.</h1>
+
+      <p>
+        Abbigliamento da lavoro, calzature professionali e antinfortunistiche,
+        DPI e divise per diversi settori professionali. Soluzioni anche per
+        aziende e personalizzazioni su richiesta.
+      </p>
+    </div>
+  </section>
+
+  <!-- NEGOZIO REALE -->
+  <section class="store" id="negozio">
+    <div class="container">
+
+      <div class="store-photo">
+        <img src="negozio.webp"
+             alt="Interno del negozio Abiti da Lavoro di Alessio Vitale a Roma">
+      </div>
+
+      <div class="store-caption">
+        <h2>Vieni a trovarci in negozio</h2>
+        <p>Via Nomentana 582 · 00141 Roma</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- AZIENDE -->
+  <section class="business" id="aziende">
+    <div class="container business-grid">
+
+      <div>
+        <div class="eyebrow">Forniture professionali</div>
+        <h2>Sei un'azienda?</h2>
+
+        <p>
+          Affianchiamo aziende e attività nella scelta dell'abbigliamento
+          professionale, delle calzature e dei DPI più adatti alle proprie esigenze.
+        </p>
+
+        <div class="business-points">
+          <div class="business-point">
+            <span class="check">✓</span>
+            <span>Forniture di abbigliamento professionale</span>
+          </div>
+
+          <div class="business-point">
+            <span class="check">✓</span>
+            <span>Calzature da lavoro e DPI</span>
+          </div>
+
+          <div class="business-point">
+            <span class="check">✓</span>
+            <span>Personalizzazione dei capi</span>
+          </div>
+
+          <div class="business-point">
+            <span class="check">✓</span>
+            <span>Preventivi in base alle esigenze della fornitura</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="business-action">
+        <strong>Area dedicata alle aziende</strong>
+        <p>
+          Raccontaci di cosa hai bisogno e richiedi informazioni
+          per la tua attività.
+        </p>
+
+       <a class="btn" href="aziende.html">
+    Crea la tua fornitura
+</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SETTORI -->
+  <section class="sectors" id="settori">
+    <div class="container">
+
+      <div class="section-heading">
+        <div class="eyebrow">Trova il tuo settore</div>
+        <h2>Abbigliamento per ogni professione</h2>
+        <p>
+          Seleziona il settore di tuo interesse per contattarci direttamente
+          con una richiesta già dedicata.
+        </p>
+      </div>
+
+      <div class="sector-grid">
+
+        <a class="sector-card"
+           href="https://wa.me/393520262607?text=Buongiorno%2C%20vorrei%20informazioni%20sull%27abbigliamento%20per%20EDILIZIA."
+           target="_blank" rel="noopener">
+          <img src="edilizia.webp" alt="Abbigliamento da lavoro per edilizia">
+          <div class="sector-overlay"></div>
+          <div class="sector-name">
+            <span>Scopri la selezione</span>
+            Edilizia
+          </div>
+        </a>
+
+        <a class="sector-card"
+           href="https://wa.me/393520262607?text=Buongiorno%2C%20vorrei%20informazioni%20sull%27abbigliamento%20per%20CUCINA%20E%20RISTORAZIONE."
+           target="_blank" rel="noopener">
+          <img src="cucina-ristorazione.webp" alt="Divise per cucina e ristorazione">
+          <div class="sector-overlay"></div>
+          <div class="sector-name">
+            <span>Scopri la selezione</span>
+            Cucina e ristorazione
+          </div>
+        </a>
+
+        <a class="sector-card"
+           href="https://wa.me/393520262607?text=Buongiorno%2C%20vorrei%20informazioni%20sull%27abbigliamento%20per%20SANITA."
+           target="_blank" rel="noopener">
+          <img src="sanita.webp" alt="Abbigliamento professionale per sanità">
+          <div class="sector-overlay"></div>
+          <div class="sector-name">
+            <span>Scopri la selezione</span>
+            Sanità
+          </div>
+        </a>
+
+        <a class="sector-card"
+           href="https://wa.me/393520262607?text=Buongiorno%2C%20vorrei%20informazioni%20sull%27abbigliamento%20per%20LOGISTICA."
+           target="_blank" rel="noopener">
+          <img src="logistica.webp" alt="Abbigliamento da lavoro per logistica">
+          <div class="sector-overlay"></div>
+          <div class="sector-name">
+            <span>Scopri la selezione</span>
+            Logistica
+          </div>
+        </a>
+
+        <a class="sector-card"
+           href="https://wa.me/393520262607?text=Buongiorno%2C%20vorrei%20informazioni%20sull%27abbigliamento%20per%20PULIZIE."
+           target="_blank" rel="noopener">
+          <img src="pulizie.webp" alt="Abbigliamento professionale per pulizie">
+          <div class="sector-overlay"></div>
+          <div class="sector-name">
+            <span>Scopri la selezione</span>
+            Pulizie
+          </div>
+        </a>
+
+        <a class="sector-card"
+           href="https://wa.me/393520262607?text=Buongiorno%2C%20vorrei%20informazioni%20sull%27abbigliamento%20per%20ESTETICA."
+           target="_blank" rel="noopener">
+          <img src="estetica.webp" alt="Abbigliamento professionale per estetica">
+          <div class="sector-overlay"></div>
+          <div class="sector-name">
+            <span>Scopri la selezione</span>
+            Estetica
+          </div>
+        </a>
+
+        <a class="sector-card"
+           href="https://wa.me/393520262607?text=Buongiorno%2C%20vorrei%20informazioni%20sull%27abbigliamento%20per%20GIARDINAGGIO."
+           target="_blank" rel="noopener">
+          <img src="giardinaggio.webp" alt="Abbigliamento da lavoro per giardinaggio">
+          <div class="sector-overlay"></div>
+          <div class="sector-name">
+            <span>Scopri la selezione</span>
+            Giardinaggio
+          </div>
+        </a>
+
+        <a class="sector-card"
+           href="https://wa.me/393520262607?text=Buongiorno%2C%20vorrei%20informazioni%20sulle%20DIVISE%20SCOLASTICHE."
+           target="_blank" rel="noopener">
+          <img src="scuole.webp" alt="Divise e abbigliamento per scuole">
+          <div class="sector-overlay"></div>
+          <div class="sector-name">
+            <span>Scopri la selezione</span>
+            Scuole
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIZI -->
+  <section class="services" id="servizi">
+    <div class="container">
+
+      <div class="section-heading">
+        <div class="eyebrow">Non solo vendita</div>
+        <h2>Servizi per professionisti e aziende</h2>
+        <p>
+          Dalla scelta del capo alla personalizzazione, ti aiutiamo
+          a costruire una fornitura adatta al tuo lavoro.
+        </p>
+      </div>
+
+      <div class="service-grid">
+
+        <div class="service">
+          <div class="service-number">01</div>
+          <h3>Abbigliamento professionale</h3>
+          <p>
+            Soluzioni per differenti professioni e ambienti di lavoro,
+            con possibilità di valutare capi e taglie direttamente in negozio.
+          </p>
+        </div>
+
+        <div class="service">
+          <div class="service-number">02</div>
+          <h3>Calzature e DPI</h3>
+          <p>
+            Calzature professionali e antinfortunistiche e dispositivi
+            per diverse esigenze lavorative.
+          </p>
+        </div>
+
+        <div class="service">
+          <div class="service-number">03</div>
+          <h3>Personalizzazione</h3>
+          <p>
+            Possibilità di personalizzare l'abbigliamento professionale
+            con logo, nome o elementi grafici per aziende e attività.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATTI -->
+  <section class="contact" id="contatti">
+    <div class="container contact-grid">
+
+      <div>
+        <div class="eyebrow">Contatti</div>
+        <h2>Parliamo del tuo lavoro.</h2>
+
+        <p>
+          Contattaci o vieni direttamente in negozio per conoscere
+          le soluzioni disponibili.
+        </p>
+
+        <div class="contact-list">
+
+          <div>
+            <strong>Negozio:</strong><br>
+            Via Nomentana 582, 00141 Roma
+          </div>
+
+          <div>
+            <strong>WhatsApp:</strong><br>
+            <a href="https://wa.me/393520262607"
+               target="_blank" rel="noopener">
+              352 026 2607
+            </a>
+          </div>
+
+          <div>
+            <strong>Telefono:</strong><br>
+            <a href="tel:+390666734634">
+              06 66734634
+            </a>
+          </div>
+
+          <div>
+            <strong>Email:</strong><br>
+            <a href="mailto:abitidalavoro582@gmail.com">
+              abitidalavoro582@gmail.com
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="hours">
+        <h3>Orari del negozio</h3>
+
+        <div class="hour-row">
+          <span>Lunedì – Venerdì</span>
+          <strong>09:00–13:00</strong>
+        </div>
+
+        <div class="hour-row">
+          <span>Lunedì – Venerdì</span>
+          <strong>15:00–19:00</strong>
+        </div>
+
+        <div class="hour-row">
+          <span>Sabato</span>
+          <strong>09:00–13:30</strong>
+        </div>
+
+        <div class="hour-row">
+          <span>Sabato</span>
+          <strong>15:00–19:30</strong>
+        </div>
+
+        <div class="hour-row">
+          <span>Domenica</span>
+          <strong>Chiuso</strong>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    © 2026 Abiti da Lavoro di Alessio Vitale · Roma
+  </div>
+</footer>
+
+</body>
+</html>
