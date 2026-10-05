@@ -811,6 +811,70 @@
 }
 
 </style>
+
+  <!-- Google Analytics: caricato solo dopo consenso esplicito -->
+  <script>
+    const GA_ID = 'G-3VD1BZSX3Y';
+
+    function loadGoogleAnalytics() {
+      if (window.__gaLoaded) return;
+      window.__gaLoaded = true;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function(){dataLayer.push(arguments);};
+      gtag('js', new Date());
+      gtag('config', GA_ID, {
+        'anonymize_ip': true
+      });
+      const s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA_ID);
+      document.head.appendChild(s);
+    }
+
+    function setAnalyticsChoice(choice) {
+      localStorage.setItem('av_analytics_consent', choice);
+      const banner = document.getElementById('av-cookie-banner');
+      if (banner) banner.hidden = true;
+      if (choice === 'granted') loadGoogleAnalytics();
+    }
+
+    function showCookieBanner() {
+      const banner = document.getElementById('av-cookie-banner');
+      if (banner) banner.hidden = false;
+    }
+
+    const savedAnalyticsChoice = localStorage.getItem('av_analytics_consent');
+    if (savedAnalyticsChoice === 'granted') loadGoogleAnalytics();
+  </script>
+
+  <style>
+    #av-cookie-banner[hidden]{display:none!important}
+    #av-cookie-banner{
+      position:fixed;left:18px;right:18px;bottom:18px;z-index:9999;
+      max-width:760px;margin:auto;background:#fff;color:#202622;
+      border:1px solid #dfe5e1;border-radius:16px;
+      box-shadow:0 16px 45px rgba(20,45,35,.22);padding:18px;
+      font-family:Arial,Helvetica,sans-serif
+    }
+    #av-cookie-banner strong{display:block;color:#244c3d;font-size:18px;margin-bottom:6px}
+    #av-cookie-banner p{margin:0 0 14px;font-size:14px;line-height:1.45;color:#56615b}
+    .av-cookie-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .av-cookie-actions button,#av-cookie-settings{
+      border:0;border-radius:9px;padding:10px 14px;font-weight:800;cursor:pointer
+    }
+    .av-cookie-accept{background:#244c3d;color:#fff}
+    .av-cookie-refuse{background:#eef2ef;color:#244c3d}
+    #av-cookie-settings{
+      position:fixed;left:12px;bottom:12px;z-index:9998;
+      background:#fff;color:#244c3d;border:1px solid #dfe5e1;
+      padding:7px 10px;font-size:11px;box-shadow:0 4px 15px rgba(20,45,35,.12)
+    }
+    @media(max-width:600px){
+      #av-cookie-banner{left:10px;right:10px;bottom:10px;padding:15px}
+      .av-cookie-actions{display:grid;grid-template-columns:1fr 1fr}
+    }
+  </style>
+
 </head>
 
 <body>
@@ -1208,6 +1272,41 @@
     © 2026 Abiti da Lavoro di Alessio Vitale · Roma
   </div>
 </footer>
+
+
+<div id="av-cookie-banner" hidden role="dialog" aria-live="polite" aria-label="Preferenze cookie">
+  <strong>Cookie analitici</strong>
+  <p>Usiamo Google Analytics solo con il tuo consenso per capire come viene utilizzato il sito e migliorarlo. Puoi accettare o rifiutare; la scelta può essere modificata in qualsiasi momento.</p>
+  <div class="av-cookie-actions">
+    <button class="av-cookie-refuse" type="button" onclick="setAnalyticsChoice('denied')">Rifiuta</button>
+    <button class="av-cookie-accept" type="button" onclick="setAnalyticsChoice('granted')">Accetta</button>
+  </div>
+</div>
+<button id="av-cookie-settings" type="button" onclick="showCookieBanner()">Cookie</button>
+<script>
+  (function(){
+    const choice = localStorage.getItem('av_analytics_consent');
+    if (!choice) showCookieBanner();
+  })();
+</script>
+
+<script>
+  document.addEventListener('click', function(e){
+    const a = e.target.closest('a');
+    if (!a || typeof window.gtag !== 'function') return;
+    const href = a.getAttribute('href') || '';
+    let eventName = '';
+    if (href.includes('wa.me')) eventName = 'click_whatsapp';
+    else if (href.startsWith('tel:')) eventName = 'click_telefono';
+    else if (href.startsWith('mailto:')) eventName = 'click_email';
+    else if (href.includes('google.com/maps') || href.includes('maps.apple.com')) eventName = 'click_mappa';
+    else if (href.includes('g.page') && href.includes('review')) eventName = 'click_recensione';
+    else if (href.includes('instagram.com')) eventName = 'click_instagram';
+    else if (href.includes('facebook.com')) eventName = 'click_facebook';
+    else if (href === 'aziende.html') eventName = 'apri_configuratore_aziende';
+    if (eventName) gtag('event', eventName, {'link_url': href});
+  });
+</script>
 
 </body>
 </html>
