@@ -875,6 +875,38 @@
     }
   </style>
 
+
+<style>
+/* Offerte: subito sotto la prima fascia della homepage */
+.promo-set{padding:32px 0 46px;background:#f6f7f5;}
+.promo-set .container{width:min(1180px,94%);}
+.promo-set h2{text-align:center;color:#244c3d;font-size:clamp(27px,3vw,38px);line-height:1.2;margin-bottom:8px;}
+.promo-subtitle{text-align:center;color:#66706a;margin:0 auto 24px;max-width:720px;}
+.promo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:start;}
+.promo-card{display:block;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 9px 28px rgba(20,45,35,.12);transition:transform .2s ease;}
+.promo-card:hover{transform:translateY(-4px);}
+.promo-card img{display:block;width:100%;height:auto;aspect-ratio:590/887;object-fit:contain;}
+@media(min-width:951px){
+ main#home>.promo-set{grid-column:1/-1;grid-row:2;min-width:0;border-radius:18px;}
+ main#home>.store{grid-row:3;}
+ main#home>.contact{grid-row:4;}
+ main#home>.services{grid-row:5;}
+}
+@media(max-width:950px){.promo-set{padding:28px 0 36px;}.promo-grid{gap:12px;}}
+@media(max-width:700px){
+ main#home>.identity{order:1;}
+ main#home>.intro{order:2;}
+ main#home>.promo-set{order:3;}
+ main#home>.store{order:4;}
+ main#home>.sectors{order:5;}
+ main#home>.business{order:6;}
+ main#home>.contact{order:7;}
+ main#home>.services{order:8;}
+ .promo-grid{grid-template-columns:1fr;gap:18px;max-width:430px;margin:auto;}
+ .promo-set .container{width:min(94%,520px);}
+}
+</style>
+
 </head>
 
 <body>
@@ -917,6 +949,25 @@
         DPI e divise per diversi settori professionali. Soluzioni anche per
         aziende e personalizzazioni su richiesta.
       </p>
+    </div>
+  </section>
+
+  <!-- OFFERTE PROMOZIONALI -->
+  <section class="promo-set" id="offerte" aria-labelledby="offerte-title">
+    <div class="container">
+      <h2 id="offerte-title">Le nostre offerte</h2>
+      <p class="promo-subtitle">Tre set professionali a prezzi promozionali. Clicca sull'offerta per contattarci su WhatsApp.</p>
+      <div class="promo-grid">
+      <a class="promo-card" href="https://wa.me/393520262607?text=Buongiorno%2C%20sono%20interessato%20al%20Set%20Lavoro%20Completo%20da%20%E2%82%AC%2089%2C99.%20Vorrei%20informazioni%20su%20taglie%20e%20disponibilit%C3%A0." target="_blank" rel="noopener noreferrer" aria-label="Richiedi su WhatsApp Set Lavoro Completo, da 89,99 euro">
+        <img src="aziende-v2-final-assets/offerta-lavoro.webp" alt="Set Lavoro Completo - offerta da 89,99 euro, richiedi informazioni su WhatsApp" loading="lazy" width="590" height="887">
+      </a>
+      <a class="promo-card" href="https://wa.me/393520262607?text=Buongiorno%2C%20sono%20interessato%20al%20Set%20Cuoco%20Completo%20da%20%E2%82%AC%2064%2C99.%20Vorrei%20informazioni%20su%20taglie%20e%20disponibilit%C3%A0." target="_blank" rel="noopener noreferrer" aria-label="Richiedi su WhatsApp Set Cuoco Completo, da 64,99 euro">
+        <img src="aziende-v2-final-assets/offerta-cuoco.webp" alt="Set Cuoco Completo - offerta da 64,99 euro, richiedi informazioni su WhatsApp" loading="lazy" width="590" height="887">
+      </a>
+      <a class="promo-card" href="https://wa.me/393520262607?text=Buongiorno%2C%20sono%20interessato%20al%20Set%20Sanitario%20Completo%20da%20%E2%82%AC%2039%2C99.%20Vorrei%20informazioni%20su%20taglie%20e%20disponibilit%C3%A0." target="_blank" rel="noopener noreferrer" aria-label="Richiedi su WhatsApp Set Sanitario Completo, da 39,99 euro">
+        <img src="aziende-v2-final-assets/offerta-sanitario.webp" alt="Set Sanitario Completo - offerta da 39,99 euro, richiedi informazioni su WhatsApp" loading="lazy" width="590" height="887">
+      </a>
+      </div>
     </div>
   </section>
 
